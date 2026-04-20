@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gematria Analysis Tool</title>
+    <style>
+        body { font-family: 'Georgia', serif; text-align: center; padding-top: 60px; background-color: #fcfaf7; color: #333; }
+        .container { background: white; padding: 40px; border-radius: 4px; display: inline-block; border: 1px solid #dcd1c4; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        h1 { font-size: 1.5rem; letter-spacing: 1px; color: #5a4d41; }
+        input { padding: 12px; width: 220px; border: 1px solid #ccc; border-radius: 2px; font-size: 16px; margin-bottom: 15px; }
+        button { padding: 12px 24px; background: #5a4d41; color: white; border: none; border-radius: 2px; cursor: pointer; font-variant: small-caps; }
+        button:hover { background: #453a31; }
+        #output { margin-top: 25px; font-size: 1.2rem; border-top: 1px double #dcd1c4; padding-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gematria Calculator</h1>
+        <p style="font-size: 0.9rem; color: #888;">Latin Script • Reduction Mode</p>
+        <input type="text" id="nameInput" placeholder="Enter string...">
+        <br>
+        <button onclick="calculate()">Analyze</button>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function calculate() {
+            const input = document.getElementById('nameInput').value.toLowerCase();
+            let sum = 0;
+            for (let i = 0; i < input.length; i++) {
+                let code = input.charCodeAt(i);
+                if (code >= 97 && code <= 122) { 
+                    sum += (code - 96);
+                }
+            }
+            const output = document.getElementById('output');
+            if(input.trim() === "") {
+                output.innerText = "";
+            } else {
+                output.innerHTML = "Calculated Value: <strong>" + sum + "</strong>";
+            }
+        }
+    </script>
+</body>
+</html>
