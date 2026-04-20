@@ -1,2 +1,1 @@
-# nomen
 name score
